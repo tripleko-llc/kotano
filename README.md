@@ -1,0 +1,3 @@
+# Kotano
+
+Hatano helper.
