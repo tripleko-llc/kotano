@@ -3,7 +3,7 @@ from functools import wraps
 import json
 
 
-__version__ = '1.0.2'
+__version__ = '1.0.3'
 __author__ = 'Tripleko LLC'
 __author_email__ = 'jared@tripleko.com'
 __description__ = 'Baby Hatano'
@@ -34,11 +34,11 @@ def proxy(typ):
             if not isinstance(event, dict):
                 raise KotanoError("Function called in improper context")
 
-            data = event.get('body', b"")
-            params = event.get('queryStringParameters', {})
-            headers = event.get('headers', {})
-            pathparams = event.get('pathParameters', {})
-            multi = event.get('multiValueQueryStringParameters', {})
+            data = event.get('body') or b""
+            params = event.get('queryStringParameters') or {}
+            headers = event.get('headers') or {}
+            pathparams = event.get('pathParameters') or {}
+            multi = event.get('multiValueQueryStringParameters') or {}
             req = Request(
                     params=params,
                     data=data,
