@@ -1,7 +1,7 @@
 from functools import wraps
 
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 __author__ = 'Tripleko LLC'
 __author_email__ = 'jared@tripleko.com'
 __description__ = 'Baby Hatano'
@@ -29,7 +29,7 @@ def proxy(typ):
                         f"Number of args: {len(args)} (should be 2)")
             assert len(args) == 2
             event, context = args
-            if not isinstance(event, {}):
+            if not isinstance(event, dict):
                 raise KotanoError("Function called in improper context")
 
             data = event.get('body', b"")
